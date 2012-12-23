@@ -14,7 +14,6 @@ import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.generator.GeneratorComponent;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
-import org.eclipse.xtext.xdoc.generator.config.Config;
 import com.google.inject.Injector;
 
 public class XdocGeneratorComponent extends GeneratorComponent{

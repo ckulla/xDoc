@@ -27,6 +27,7 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.xtext.xdoc,
  org.eclipse.xtext.xdoc.formatting,
  org.eclipse.xtext.xdoc.generator,
+ org.eclipse.xtext.xdoc.generator.ehelp,
  org.eclipse.xtext.xdoc.generator.util,
  org.eclipse.xtext.xdoc.images,
  org.eclipse.xtext.xdoc.images.impl,

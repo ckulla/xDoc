@@ -13,6 +13,7 @@ public class XdocDocumentNameProvider extends DefaultDeclarativeQualifiedNamePro
 			return QualifiedName.create(identifiable.getName());
 		return null;
 	}
+	
 	QualifiedName qualifiedName(LangDef languageDefinition) {
 		if (!Strings.isEmpty(languageDefinition.getName()))
 			return QualifiedName.create(languageDefinition.getName());

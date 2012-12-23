@@ -31,19 +31,28 @@ class Utils {
 		
 	def escapeLatexChars(String s) {
 		if(s != null)
-			s.replaceAll("\\$", "\\\\\\$").replaceAll("\\{", "\\\\{").replaceAll("\\}", "\\\\}")
+			s.
+				replaceAll("\\$", "\\\\\\$").
+				replaceAll("\\{", "\\\\{").
+				replaceAll("\\}", "\\\\}")
 				.replaceAll("\\\\(?![{}$])", "\\\\textbackslash{}")
-				.replaceAll("#", "\\\\#").replaceAll("%", "\\\\%")
-				.replaceAll("_", "\\\\_").replaceAll("\\^", "\\\\textasciicircum{}")
-				.replaceAll("&", "\\\\&").replaceAll("~", "\\\\textasciitilde{}")
+				.replaceAll("#", "\\\\#").
+				replaceAll("%", "\\\\%")
+				.replaceAll("_", "\\\\_").
+				replaceAll("\\^", "\\\\textasciicircum{}")
+				.replaceAll("&", "\\\\&").
+				replaceAll("~", "\\\\textasciitilde{}")
 		else 
 			""
 	}
 
 	def unescapeXdocChars(String s) {
 		if(s != null)
-			s.replaceAll("\\\\\\[", "[").replaceAll("\\\\\\]", "]")
-				.replaceAll("\\\\\\%", "%").replaceAll("\\\\\\:", ":")
+			s.
+				replaceAll("\\\\\\[", "[").
+				replaceAll("\\\\\\]", "]")
+				.replaceAll("\\\\\\%", "%").
+				replaceAll("\\\\\\:", ":")
 		else
 			""
 	}
@@ -54,9 +63,13 @@ class Utils {
 
 	def escapeHTMLChars(String s) {
 		if(s != null)
-			s.replace("&", "&amp;")/*.replace("'", "&apos;") */
-				.replace("<", "&lt;").replace(">", "&gt;")
-				.replace("«", "&laquo;").replace("»", "&raquo;")
+			s.
+				replace("&", "&amp;").
+				replace("'", "&apos;").
+				replace("<", "&lt;").
+				replace(">", "&gt;").
+				replace("«", "&laquo;").
+				replace("»", "&raquo;")
 		else
 			""
 	}
@@ -80,14 +93,14 @@ class Utils {
 	def getHighlightedHtmlCode(String code, LangDef language) {
 		val lexer = new Common()
 		lexer.setCharStream(new ANTLRStringStream(code.unescapeXdocChars))
-		val keywords = if (language !=null) 
-							language.keywords.map[unescapeXdocChars].toSet
-						else
-							emptySet
+		val keywords = 
+			if (language != null) 
+				language.keywords.map[unescapeXdocChars].toSet
+			else
+				emptySet
 		var token = lexer.nextToken
 		val result = new StringBuilder()
 		while (token.type != Token::EOF) {
-			//println(token.text)
 			switch (t : token.type) {
 				case Common::ID : {
 					if (keywords.contains(token.text)) {

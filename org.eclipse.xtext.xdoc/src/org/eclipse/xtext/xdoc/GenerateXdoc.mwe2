@@ -71,7 +71,7 @@ Workflow {
 			}
 
 			// With this fragment we generate the lexer from Common.g here (used for highlighting 
-			// and generation, html highlighting). We don't declare it as runtime 
+			// and during generation, html highlighting). We don't declare it as runtime 
 			// to prevent a binding for the lexer in the runtime module. 
 			fragment = parser.antlr.ex.ExternalAntlrLexerFragment {
 				lexerGrammar = "org.eclipse.xtext.xdoc.lexer.Common"		

@@ -7,13 +7,7 @@ import "http://www.eclipse.org/xtext/xdoc/Xdoc"
 XdocFile:
 	{XdocFile}
 	WS? MULTI_NL?
-	(mainSection=(Document |
-					Part	|
-					Chapter |
-					Section |
-					Section2)
-	MULTI_NL?)?;
-
+	(mainSection=(Document | Part | Chapter | Section | Section2) MULTI_NL?)?;
 
 Document:
 	'document[' title=TextOrMarkup ']'
@@ -37,11 +31,9 @@ PartRef:
 	'part-ref[' part=[Part] ']'
 ;
 
-
 GlossaryEntry:
 	'gloss-entry['name=UnpunctText(',' ANY_WS* alias+=UnpunctText ANY_WS*)*']' ANY_WS* '[' description+=TextOrMarkup(MULTI_NL description+=TextOrMarkup)* ']'
 ;
-
 
 Chapter:
 	ChapterRef|
@@ -92,7 +84,7 @@ Text:
 
 UnpunctText:
 	(ID | ANY_OTHER | '\\[' | '\\]' | "-" | '\\:' | '\\%')+
-		(WS (ID | ANY_OTHER | '\\[' | '\\]' | "-" | '\\:' | '\\%'))*
+	(WS (ID | ANY_OTHER | '\\[' | '\\]' | "-" | '\\:' | '\\%'))*
 ;
 
 MarkUp:
@@ -108,21 +100,21 @@ MarkUp:
 	Table | 
 	Todo;
 	
-Table :
+Table:
 	{Table}
 	'table['
 		(ANY_WS*  rows+=TableRow)*
 		ANY_WS*
 	']';
 
-TableRow :
+TableRow:
 	{TableRow}
 	'tr['
 		(ANY_WS* data+=TableData)*
 		ANY_WS*
 	']';
 
-TableData :
+TableData:
 	{TableData}
 	'td[' (MULTI_NL? contents+=TextOrMarkup (MULTI_NL contents+=TextOrMarkup)*)? ']';
 
@@ -162,7 +154,6 @@ Link:
 	{Link}
 	'link[' (url=Text)? ']' ANY_WS* '[' (text=Text)? ']';
 
-	// Don't think this was the discussed syntax
 ImageRef:
 	('img:' ANY_WS* name=ID ANY_WS* '['|'img[') path=Text /*TODO make it a crossreference to images */ ']'
 	ANY_WS* '[' caption=Text? ']' ANY_WS* '[' clazz=Text? ']' ANY_WS* '[' style=Text? ']' ;
@@ -200,7 +191,6 @@ ANY_WS:
 
 KeyWord: 
 	UnpunctText;
-	//(ID | "-")+; 
 
 terminal ID:
 	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
@@ -209,7 +199,7 @@ terminal SL_COMMENT:
 	'%%' !('\n' | '\r')* ('\r'? '\n');
 
 terminal MULTI_NL:
-	'\r'? '\n' (/*(' ' | '\t')**/ '\r'? '\n')+;
+	'\r'? '\n' ('\r'? '\n')+;
 
 terminal SINGLE_NL:
 	'\r'? '\n';

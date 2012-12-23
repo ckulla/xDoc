@@ -5,7 +5,7 @@ import javax.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.eclipse.xtext.xdoc.util.ParseHelperExtensions
+import org.eclipse.xtext.xdoc.test.ParseHelperExtensions
 import org.eclipse.xtext.xdoc.xdoc.Chapter
 import org.eclipse.xtext.xdoc.xdoc.Code
 import org.eclipse.xtext.xdoc.xdoc.CodeBlock
@@ -21,7 +21,7 @@ import org.eclipse.xtext.xdoc.xdoc.XdocFile
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.eclipse.xtext.xdoc.util.ParserTestConstants.*
+import static org.eclipse.xtext.xdoc.test.ParserTestConstants.*
 
 import static extension org.junit.Assert.*
 
@@ -29,8 +29,11 @@ import static extension org.junit.Assert.*
 @InjectWith(typeof(XdocInjectorProvider))
 class ParserTest {
 	
-	@Inject extension ParseHelperExtensions<XdocFile>
-	@Inject extension ValidationTestHelper
+	@Inject 
+	extension ParseHelperExtensions<XdocFile>
+
+	@Inject 
+	extension ValidationTestHelper
 
 	@Test
 	def testSimple() {

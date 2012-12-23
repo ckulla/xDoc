@@ -1,0 +1,8 @@
+document[Xdoc User Guide]
+
+codelanguage-def[xdoc][
+	document chapter section section2 section3 section4
+]
+
+chapter-ref[Introduction]
+
