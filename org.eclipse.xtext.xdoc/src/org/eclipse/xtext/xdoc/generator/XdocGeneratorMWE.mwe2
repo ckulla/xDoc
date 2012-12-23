@@ -3,12 +3,12 @@ module org.eclipse.xtext.xdoc.generator.XdocGeneratorMWE
 import org.eclipse.emf.mwe.utils.*
 
 
-var targetDir = "src-gen"
-//var modelPath = "src/"
-var pdfLatex = "pdflatex"
-var release = false
-var cleanAfterRun = true
-var document
+//var targetDir = "src-gen"
+////var modelPath = "src/"
+//var pdfLatex = "pdflatex"
+//var release = false
+//var cleanAfterRun = true
+//var document
 
 Workflow {
 
